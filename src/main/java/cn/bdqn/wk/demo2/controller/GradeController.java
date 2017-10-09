@@ -19,6 +19,9 @@ import javax.annotation.Resource;
 @RequestMapping(value = "grade")
 public class GradeController {
 
+
+
+
     @Resource
     private GradeService gradeService;
 
@@ -27,6 +30,8 @@ public class GradeController {
         model.addAttribute("pageInfo", gradeService.queryAllGrade(pageNum, pageSize));
         return "main/grade";
     }
+
+
 
     @GetMapping(value = "queryGrade", produces = "application/json;charset=utf-8")
     @ResponseBody
