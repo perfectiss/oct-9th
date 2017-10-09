@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.bdqn.wk.demo2.mapper.GradeMapper">
+    <resultMap id="gradeMap" type="cn.bdqn.wk.demo2.entity.Grade">
+        <id property="id" column="id"></id>
+        <result property="gradeName" column="grade_name"/>
+        <result property="createDate" column="create_date"/>
+        <result property="details" column="details"/>
+    </resultMap>
+    <select id="queryAllGrade" resultMap="gradeMap">
+        select * from grade ORDER by id DESC 
+    </select>
+
+    <select id="queryGradeById" resultMap="gradeMap" parameterType="Integer">
+        select * from grade where id = #{id}
+    </select>
+
+    <insert id="addGrade" parameterType="Grade">
+        insert into grade values (0,#{gradeName},now(),#{details})
+    </insert>
+
+    <delete id="deleteGrade" parameterType="Integer">
+        DELETE from grade where id=#{id}
+    </delete>
+
+    <update id="updateGrade" parameterType="Grade">
+        update grade set details  = #{details}  where id = #{id}
+    </update>
+</mapper>
